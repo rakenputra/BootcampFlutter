@@ -14,10 +14,10 @@ class GetStartedPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(bottom: 37),
+                margin: const EdgeInsets.only(bottom: 37),
                 width: double.infinity,
                 height: 330,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/image_news.png')
                   ),
@@ -31,13 +31,13 @@ class GetStartedPage extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 'Berita Terpercaya, Di Ujung Jari Anda',
                 style: TextStyle(fontSize: 15),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               SizedBox(
                 height: 52,
                 width: double.infinity,
@@ -52,14 +52,14 @@ class GetStartedPage extends StatelessWidget {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff3498DB),
+                    backgroundColor: const Color(0xff3498DB),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 21),
+              const SizedBox(height: 21),
               SizedBox(
                 height: 52,
                 width: double.infinity,
@@ -70,11 +70,11 @@ class GetStartedPage extends StatelessWidget {
                     style: GoogleFonts.arimo(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xff3498DB)
+                      color: const Color(0xff3498DB)
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    side: BorderSide(color: Color(0xff3498DB)),
+                    side: const BorderSide(color: Color(0xff3498DB)),
                     backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)
