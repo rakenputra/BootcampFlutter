@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app/settings.dart';
+import 'package:news_app/search.dart';
 
-class HomePage extends StatelessWidget {
+// Define the HomePage as StatefulWidget to handle bottom nav selection
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    const HomePageContent(),
+    const SearchPage(),
+    const SettingsPage(),
+  ];
+
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +59,36 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'settings',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// The content of the HomePage
+class HomePageContent extends StatelessWidget {
+  const HomePageContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,53 +208,52 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),
+                    )
                   ),
-                  // News 2: Using Stack with Background and Image
-                  Container(
-                    height: 311,
-                    width: 311,
-                    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Colors.black12,
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned.fill(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                          ),
-                        ),
-                        Positioned.fill(
-                          child: ClipRRect(
+                         Container(
+                          height: 311,
+                          width: 311,
+                          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            child: Image.asset(
-                              'assets/images/News2.png',
-                              fit: BoxFit.cover,
-                            ),
+                            color: Colors.black12,
                           ),
-                        ),
-                         Positioned.fill(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Colors.black.withOpacity(0.5),
-                                  Colors.transparent,
-                                  Colors.black.withOpacity(0.5),
-                                ],
-                                stops: const [0.0, 0.5, 1.0],
+                          child:Stack(
+                            children: [
+                              Positioned.fill(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
+                              Positioned.fill(
+                                child:ClipRRect(
+                                  borderRadius: BorderRadius.circular(16),
+                                  child:Image.asset(
+                                    'assets/images/News2.png',
+                                    fit: BoxFit.cover,
+                                    ),
+                                ) ,
+                              ),
+                              Positioned.fill(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.black.withOpacity(0.5),
+                                        Colors.transparent,
+                                        Colors.black.withOpacity(0.5),
+                                      ],
+                                      stops: const [0.0, 0.5, 1.0]
+                                    )
+                                  ),
+                                )
+                                )
                       ],
                     ),
                   ),
@@ -235,15 +287,12 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-
-            Container(
-              height: 400,
-              child: ListView.builder(
-                itemCount: newsItems.length,
-                itemBuilder: (context, index) {
-                  final newsItem = newsItems[index];
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: newsItems.map((newsItem) {
                   return Container(
-                    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    margin: const EdgeInsets.symmetric(vertical: 8),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -254,29 +303,26 @@ class HomePage extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             image: DecorationImage(
-                              image: AssetImage(newsItem.imagePath), 
+                              image: AssetImage(newsItem.imagePath),
                               fit: BoxFit.cover,
                             ),
                           ),
                         ),
-                        
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              
                               Text(
-                                newsItem.category,  
+                                newsItem.category,
                                 style: GoogleFonts.poppins(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w900,
-                                  color: Colors.grey, 
+                                  color: Colors.grey,
                                 ),
                               ),
-                              const SizedBox(height: 8), 
-                              
+                              const SizedBox(height: 8),
                               Text(
-                                newsItem.title,  // Dynamic title
+                                newsItem.title,
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -289,7 +335,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   );
-                },
+                }).toList(),
               ),
             ),
           ],
@@ -328,3 +374,4 @@ List<NewsItem> newsItems = [
     title: 'Hypatos gets \$11.8M for a deep learning approach',
   ),
 ];
+
