@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "291276455080",
+    "project_id": "sanber-login",
+    "storage_bucket": "sanber-login.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291276455080:android:295c16d67cb5b7a46e969d",
+        "android_client_info": {
+          "package_name": "com.example.login_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL5hkCrbfwfRNKqwejjer-oSEgp0RzF-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
