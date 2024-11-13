@@ -13,8 +13,9 @@ class UserModel{
     required this.avatar
     });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel (
-    id: json['id'] ?? 0,
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+  UserModel (
+    id: json['id'],
     firstname: json['first_name'] ,
     lastname: json['last_name'],
     email: json['email'] ,
