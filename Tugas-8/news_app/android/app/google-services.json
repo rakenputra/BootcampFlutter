@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "213347808814",
+    "project_id": "route-management-demo",
+    "storage_bucket": "route-management-demo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213347808814:android:c8ce8461696614d61011bf",
+        "android_client_info": {
+          "package_name": "com.example.news_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHSccBkLNqTk3WhHnioANtt6J6JYYjqKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/home.dart';
+import 'package:news_app/login.dart';
+import 'package:news_app/signup.dart';
 
 class GetStartedPage extends StatelessWidget {
   const GetStartedPage({super.key});
@@ -44,10 +47,7 @@ class GetStartedPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage())
-                    );
+                    Get.to(() => const LoginPage());
                   },
                   child: Text(
                     'Masuk',
@@ -70,7 +70,9 @@ class GetStartedPage extends StatelessWidget {
                 height: 52,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                     Get.to(() => const SignupPage());
+                  },
                   child: Text(
                     'Mendaftar',
                     style: GoogleFonts.arimo(
